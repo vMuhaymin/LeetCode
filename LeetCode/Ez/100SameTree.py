@@ -24,17 +24,13 @@ class Solution(object):
         stackT1.append(p)
         stackT2.append(q)
 
-        while (stackT1) and (stackT2) :
-            if (stackT1 and not stackT2) or (not stackT1 and stackT2):
-                return False 
-            
+        while (stackT1) and (stackT2):
             nodeT1 = stackT1.pop(0)
             nodeT2 = stackT2.pop(0)
             if nodeT1.val != nodeT2.val:
                 return False
             
             if nodeT1.left != None and nodeT2.left != None:
-                 
                  stackT1.append(nodeT1.left)
                  stackT2.append(nodeT2.left)
             elif (nodeT1.left == None and nodeT2.left != None) or (nodeT1.left == None and nodeT2.left != None):
@@ -44,9 +40,11 @@ class Solution(object):
                  stackT1.append(nodeT1.right)
                  stackT2.append(nodeT2.right)
 
-            elif (nodeT1.right == None and nodeT2.right != None) or (nodeT1.right == None and nodeT2.right != None):
+            elif (nodeT1.right != None and nodeT2.right == None) or (nodeT1.right == None and nodeT2.right != None):
                 return False
-        
+        if (stackT1 and not stackT2) or (not stackT1 and stackT2):
+            return False
+         
         return True
 
         
