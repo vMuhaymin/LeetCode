@@ -8,25 +8,27 @@ class Solution(object):
     def isSymmetric(self, p):
         """
         :type p: Optional[TreeNode]
-        :type q: Optional[TreeNode]
         :rtype: bool
         """
         # BFs
         stackT1 = []
         stackT2 = []
 
-        #Check the root
+        #Check the root and its left & right sub tree
         if p == None :
+            return True
+        elif (p.left == None and p.right == None):
             return True
         elif (p.left != None and p.right == None) or (p.left == None and p.right != None):
             return False
         else:
             leftSubTree = p.left 
             rightSubTree = p.right 
-        #Check the root of the sub trees
-        if (leftSubTree.left != None and rightSubTree.left == None) or (leftSubTree.right == None and rightSubTree.right != None):
-            return False
 
+        #Check the  new roots of the sub trees
+        if (leftSubTree.left != None and rightSubTree.right == None) or (leftSubTree.right == None and rightSubTree.left != None):
+            return False
+        #BFS for the left side and reversed BFf on the lefts side
         stackT1.append(leftSubTree)
         stackT2.append(rightSubTree)
 
