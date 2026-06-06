@@ -15,11 +15,20 @@ def climbingLeaderboard(ranked, player):
     done = False
     i = len(player) - 1;
     j= 0;
+
     while(not done):
         print(f'--------------------- ')
         print(f'round the i ={i} and j ={j} ')
+        if(i == 0 and j== len(ranked)-1 ):
+            playerStatus.append(placement[ranked[j]] + 1)
+            print(f'The rank of player is {player[i]} = {ranked[j]} with rank of {placement[ranked[j]] + 1} ')
+            return playerStatus
+        elif(i == 0 and j== len(ranked)):
+            playerStatus.append(placement[ranked[j-1]] + 1)
+            return playerStatus
         if (i == -1 or j== len(ranked)):
             return playerStatus
+
         if (player[i]>= ranked[j]):
             if(player[i]== ranked[j]):
                 placement[ranked[j]]
@@ -67,11 +76,11 @@ def climbingLeaderboard(ranked, player):
 # ranked = [100, 90,90,80]
 # player = [70,80,105]
 
-ranked = [100, 100,50,40,40,20,10]
-player = [5,25,50,120]
+# ranked = [100, 100,50,40,40,20,10]
+# player = [5,25,50,120]
 
-# ranked = [100, 90,90,80,75,60]
-# player = [50,65,77,90,102]
+ranked = [100, 90,90,80,75,60]
+player = [50,65,77,90,102]
 
 
 
