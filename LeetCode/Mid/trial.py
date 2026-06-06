@@ -4,13 +4,27 @@ def climbingLeaderboard(ranked, player):
     currenPlayerRank= 1
     for i in range(totalPlayers - 1 , -1 ,-1):         
         if( i - 1 != -2 and ranked[i] == ranked[i - 1]):
-            rank[i] =  currenPlayerRank
-            print(f'the equal ranked is {ranked[i]}' )
+            rank[ranked[i]] = currenPlayerRank
+            #print('the number is '+str(rank[ranked[i]])+ f' | the actual rank is {ranked[i]}' )
         else: 
-            rank[i] =  currenPlayerRank
+            rank[ranked[i]] = currenPlayerRank
             currenPlayerRank +=1
-        print('the number is '+str(rank[i])+ f' | the actual rank is {ranked[i]}' )
-    
+            #print('the number is '+str(rank[ranked[i]])+ f' | the actual rank is {ranked[i]}' )
+    totalScore = len(player)
+    currPlayerRank= []
+    counter = totalScore - 1 # The len of the player's score - 1
+    for i in range(totalScore - 1 , -1 , -1):
+        done = False
+        while (not done):
+            score = player[counter]
+            print(f'the rank is {str(rank[ranked[counter]])} and the score is {ranked[counter]}')
+            if counter < 3:
+                counter += 1
+            else:
+                done = True
+               
+    for i in currPlayerRank:
+        print(f'the curr player rank is {currPlayerRank}')
 
 Rank = [100,90, 90, 80 , 60 ]
 list2 = [70, 80 , 105]
