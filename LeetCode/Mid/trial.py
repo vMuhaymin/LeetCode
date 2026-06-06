@@ -18,7 +18,6 @@ def climbingLeaderboard(ranked, player):
     PlayersCounter = totalScore - 1 # The len of the player's score - 1
     for i in range(totalScore - 1 , -1 , -1):
         done = False
-        
         score = player[i]
         while (not done):
             if counter > len(rank) :
