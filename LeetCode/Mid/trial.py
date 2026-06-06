@@ -16,19 +16,45 @@ def climbingLeaderboard(ranked, player):
     PlayersCounter = totalScore - 1 # The len of the player's score - 1
     for i in range(totalScore - 1 , -1 , -1):
         done = False
+        score = player[i]
         while (not done):
-            score = player[PlayersCounter]
-            print(f'the rank is {str(rank[ranked[counter]])} and the score is {ranked[counter]}')
-            if counter < 4:
-                counter += 1
-                PlayersCounter -= 1
-            else:
-                done = True
-               
-    for i in currPlayerRank:
-        print(f'the curr player rank is {currPlayerRank}')
+            if counter > len(rank) - 1:
+                currPlayerRank.append(1)
+                #print(f'THE RANK IS THE FIRST ONE ! ')
+                done= True
+                print('smaller!')
+                return currPlayerRank;
+            elif ( counter == len(rank) - 1 and score == ranked[counter] ):
+                currPlayerRank.append(rank[ranked[counter]])
+                done= True
+                print('Equal!')
 
-Rank = [100,90, 90, 80 , 60 ]
+            elif (score > ranked[counter]):
+                currPlayerRank.append(rank[ranked[counter]] + 1)
+                done= True
+                print('Bigger!')
+            elif( score == ranked[counter]):
+                #print(f'THE RANK IS EQUAL! {rank[ranked[counter]] } ')
+                done= True
+                print('Equal!')
+            counter += 1
+        done = False
+        
+            
+            
+            #For debugging
+            # print(f'the rank is {str(rank[ranked[counter]])} and the score is {ranked[counter]}')
+            # if counter < 4:
+            #     counter += 1
+            #     PlayersCounter -= 1
+            # else:
+            #     done = True
+               
+
+
+Rank = [100,90, 90, 80 ]
 list2 = [70, 80 , 105]
 
-climbingLeaderboard(Rank, list2)
+playersRank = climbingLeaderboard(Rank, list2)
+for i in playersRank:
+    print(f'the player"s rank is {i}')
