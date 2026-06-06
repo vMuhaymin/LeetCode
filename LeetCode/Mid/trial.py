@@ -12,14 +12,16 @@ def climbingLeaderboard(ranked, player):
             #print('the number is '+str(rank[ranked[i]])+ f' | the actual rank is {ranked[i]}' )
     totalScore = len(player)
     currPlayerRank= []
-    counter = totalScore - 1 # The len of the player's score - 1
+    counter = 0
+    PlayersCounter = totalScore - 1 # The len of the player's score - 1
     for i in range(totalScore - 1 , -1 , -1):
         done = False
         while (not done):
-            score = player[counter]
+            score = player[PlayersCounter]
             print(f'the rank is {str(rank[ranked[counter]])} and the score is {ranked[counter]}')
-            if counter < 3:
+            if counter < 4:
                 counter += 1
+                PlayersCounter -= 1
             else:
                 done = True
                
