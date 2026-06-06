@@ -10,7 +10,8 @@ def climbingLeaderboard(ranked, player):
             rank[ranked[i]] = currenPlayerRank
             currenPlayerRank +=1
             #print('the number is '+str(rank[ranked[i]])+ f' | the actual rank is {ranked[i]}' )
-
+    for i in range(len(rank)):
+        print(f'The rank is {rank[ranked[i]]} with score of {ranked[i]} ')
     totalScore = len(player)
     currPlayerRank= []
     counter = 0
@@ -37,7 +38,7 @@ def climbingLeaderboard(ranked, player):
             elif (score > ranked[counter]):
                 currPlayerRank.append(rank[ranked[counter]] )
                 done= True
-                print(f'The rank of previous of {rank[ranked[counter]]} the score is {score} Compared with {ranked[counter]}')
+                print(f'The rank of previous of {rank[ranked[counter]] } the score is {score} Compared with {ranked[counter]}')
             elif( score == ranked[counter]):
                 done= True
                 currPlayerRank.append(rank[ranked[counter]] )
