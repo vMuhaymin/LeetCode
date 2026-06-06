@@ -11,36 +11,36 @@ def climbingLeaderboard(ranked, player):
             currenPlayerRank +=1
             #print('the number is '+str(rank[ranked[i]])+ f' | the actual rank is {ranked[i]}' )
     totalScore = len(player)
+    
     currPlayerRank= []
     counter = 0
     PlayersCounter = totalScore - 1 # The len of the player's score - 1
     for i in range(totalScore - 1 , -1 , -1):
         done = False
+        counter=0
         score = player[i]
         while (not done):
-            if counter > len(rank) - 1:
+            print(f'The index of currPlayer: {i} from {totalScore}| The counter is {counter} from {len(rank)}')
+            if counter > len(rank) :
                 currPlayerRank.append(1)
                 #print(f'THE RANK IS THE FIRST ONE ! ')
                 done= True
                 print('smaller!')
                 return currPlayerRank;
-            elif ( counter == len(rank) - 1 and score == ranked[counter] ):
+            elif ( counter == len(rank)  and score == ranked[counter] ):
                 currPlayerRank.append(rank[ranked[counter]])
                 done= True
-                print('Equal!')
+                print('Equal On The Last!')
 
             elif (score > ranked[counter]):
                 currPlayerRank.append(rank[ranked[counter]] + 1)
                 done= True
                 print('Bigger!')
             elif( score == ranked[counter]):
-                #print(f'THE RANK IS EQUAL! {rank[ranked[counter]] } ')
                 done= True
                 print('Equal!')
             counter += 1
-        done = False
         
-            
             
             #For debugging
             # print(f'the rank is {str(rank[ranked[counter]])} and the score is {ranked[counter]}')
