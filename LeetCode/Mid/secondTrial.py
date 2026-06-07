@@ -22,7 +22,8 @@ def climbingLeaderboard(ranked, player):
         if (j > len(placement) and i>= 0):
             playerStatus.append(j)
             print(f'LAST ! with score = {playersScore} and rank= {len(placement) + 1} ' )
-            if i == 0:
+            i -= 1
+            if i < 0:
                 done = True
 
         elif playersScore > score and j == 1:
