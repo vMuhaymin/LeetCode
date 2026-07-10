@@ -9,52 +9,39 @@
 #
 
 def climbingLeaderboard(ranked, player):
-    
     placement = {}
     placementRanked = 1
     for i in range(len(ranked)):
         if ( i != len(ranked) - 1 and ranked[i] == ranked[i+1]):
-            placement[ranked[i]] = placementRanked
+            placement[placementRanked] = ranked[i]
         else:
-            placement[ranked[i]] = placementRanked
+            placement[placementRanked] = ranked[i]
             placementRanked +=1
-
     playerStatus= []
-    counter = 1
     done = False
-    i = len(player) - 1;
-    j= 0;
-
+    i = len(player) - 1
+    j= 1
     while(not done):
-        print(f'--------------------- ')
-        print(f'round the i ={i} and j ={j} ')
-        if(i == 0 and j== len(ranked)-1 ):
-            playerStatus.append(placement[ranked[j]] + 1)
-            print(f'The rank of player is {player[i]} = {ranked[j]} with rank of {placement[ranked[j]] + 1} ')
-            return list(reversed(playerStatus))
-        elif(i == 0 and j== len(ranked)):
-            playerStatus.append(placement[ranked[j-1]] + 1)
-            return list(reversed(playerStatus))
-        if (i == -1 or j== len(ranked)):
-            return list(reversed(playerStatus))
+        playersScore = player[i]
+        if j <= len(placement) : 
+            score = placement[j]
 
-        if (player[i]>= ranked[j]):
-            if(player[i]== ranked[j]):
-                placement[ranked[j]]
-                playerStatus.append(placement[ranked[j]])
-                print(f'The rank of player is {player[i]} = {ranked[j]} with rank of {placement[ranked[j]]} ')
-                i -=1
-                j +=1
-            else:
-                playerStatus.append(placement[ranked[j]])
-                print(f'The rank of player is {player[i]} > {ranked[j]} with rank of {placement[ranked[j]]} ')
-                i -=1
-                counter +=1
+        if (j > len(placement) and i>= 0):
+            playerStatus.append(j)
+            if i == 0:
+                done = True
+        elif playersScore > score and j == 1:
+            playerStatus.append(1)
+            i-=1
+        elif playersScore == score :
+            playerStatus.append(j)
+            i-=1
+        elif  playersScore > score :
+            playerStatus.append(j)
+            i-=1
         else:
-            print(f'The rank of player is {player[i]} < {ranked[j]}')
-            j +=1
-            counter +=1
-
+            j+=1
+    return reversed(playerStatus)
 
 
 
