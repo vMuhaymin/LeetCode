@@ -3,18 +3,21 @@ class Solution:
 
         groupedAnagrams = []
 
+        if len(strs) == 1:
+            return groupedAnagrams.append([strs[0]])
+
         while len(strs) >= 1 :
             anagrams = []
             
             seen = {}
-            word = strs.pop()
-            
+            word = strs.pop(0)
+            anagrams.append(word)
+
             for j in word:
                 if j in seen:
                     seen[j] = seen.get(j) +1 
                 else:
                     seen[j] = 1
-            anagrams.append(word)
 
             for otherWord in strs:
                 anotherSeen = {}
@@ -31,8 +34,3 @@ class Solution:
             groupedAnagrams.append(anagrams)
         
         return groupedAnagrams
-
-
-sol = Solution()
-words = ["eat","tea","tan","ate","nat","bat"]
-print(f"The solution is {sol.groupAnagrams(words)}")
