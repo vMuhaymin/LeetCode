@@ -1,31 +1,37 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
-        if len(nums) <= 1 :
+        if len(nums) <= 1 or len(nums) == k:
             return nums
         
+        
         nums.sort()
+
+        
         elementFrequency = {}
 
         for i in nums:
             if i in elementFrequency:
                 elementFrequency[i] = elementFrequency.get(i) +1
             else:
-                elementFrequency[i] = 0
+                elementFrequency[i] = 1
         
         K_Frequencey = []
         while k != 0 :
             highestFreq = 0
             for i in elementFrequency:
                 if highestFreq < elementFrequency.get(i):
-                    highestFreq = i
-            elementFrequency.pop(highestFreq)
-            K_Frequencey.append(highestFreq)
+                    highestFreq = elementFrequency.get(i)
+                    el = i 
+            
+            elementFrequency.pop(el)
+            K_Frequencey.append(el)
             k -=1
+
         return K_Frequencey
 
 
 sol = Solution()
-nums = [1,2,1,2,1,2,3,1,3,2]
-k = 2
+nums = [3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6]
+k = 10
 print(f"The solution is {sol.topKFrequent(nums,k)}")
