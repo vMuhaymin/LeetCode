@@ -4,7 +4,6 @@ class Solution:
         if len(nums) <= 1 or len(nums) == k:
             return nums
         
-        
         nums.sort()
 
         #To calculate the frequency of the elements
@@ -30,9 +29,3 @@ class Solution:
             k -=1
 
         return K_Frequencey
-
-
-sol = Solution()
-nums = [3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6]
-k = 10
-print(f"The solution is {sol.topKFrequent(nums,k)}")
