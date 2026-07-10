@@ -2,9 +2,10 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
         groupedAnagrams = []
-
+        
         if len(strs) == 1:
-            return groupedAnagrams.append([strs[0]])
+            groupedAnagrams.append(strs)
+            return groupedAnagrams
 
         while len(strs) >= 1 :
             anagrams = []
@@ -37,5 +38,5 @@ class Solution:
 
 
 sol = Solution()
-words = ["bat" ]
+words = ["bat"]
 print(f"The solution is {sol.groupAnagrams(words)}")
