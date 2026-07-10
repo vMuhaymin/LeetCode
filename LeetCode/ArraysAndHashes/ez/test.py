@@ -11,7 +11,7 @@ class Solution:
             anagrams = []
             
             seen = {}
-            word = strs.pop(0)
+            word = strs.pop()
             anagrams.append(word)
 
             for j in word:
@@ -20,7 +20,7 @@ class Solution:
                 else:
                     seen[j] = 1
 
-            for otherWord in strs:
+            for otherWord in strs[:]:
                 anotherSeen = {}
                 for i in otherWord:
                     if i in anotherSeen:
@@ -38,5 +38,5 @@ class Solution:
 
 
 sol = Solution()
-words = ["bat"]
+words = ["","",""]
 print(f"The solution is {sol.groupAnagrams(words)}")
