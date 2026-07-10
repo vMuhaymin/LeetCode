@@ -1,10 +1,7 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        
-        if len(nums) <= 1 :
-            return nums
-        
         nums.sort()
+
         elementFrequency = {}
 
         for i in nums:
@@ -19,13 +16,7 @@ class Solution:
             for i in elementFrequency:
                 if highestFreq < elementFrequency.get(i):
                     highestFreq = i
-            elementFrequency.pop(highestFreq)
             K_Frequencey.append(highestFreq)
             k -=1
-        return K_Frequencey
 
 
-sol = Solution()
-nums = [1,2,1,2,1,2,3,1,3,2]
-k = 2
-print(f"The solution is {sol.topKFrequent(nums,k)}")
