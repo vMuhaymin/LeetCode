@@ -1,38 +1,38 @@
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        
-        if len(nums) <= 1 or len(nums) == k:
-            return nums
-        
-        
-        nums.sort()
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
-        #To calculate the frequency of the elements
-        elementFrequency = {}
+        groupedAnagrams = []
 
-        for i in nums:
-            if i in elementFrequency:
-                elementFrequency[i] = elementFrequency.get(i) +1
-            else:
-                elementFrequency[i] = 1
-        
-        #Loop k times, every loop will drop the highest from elementFrequency, and add it to K_Frequencey k times
-        K_Frequencey = []
-        while k != 0 :
-            highestFreq = 0
-            for i in elementFrequency:
-                if highestFreq < elementFrequency.get(i):
-                    highestFreq = elementFrequency.get(i)
-                    el = i 
+        while len(strs) >= 1 :
+            anagrams = []
             
-            elementFrequency.pop(el)
-            K_Frequencey.append(el)
-            k -=1
+            seen = {}
+            word = strs.pop()
+            
+            for j in word:
+                if j in seen:
+                    seen[j] = seen.get(j) +1 
+                else:
+                    seen[j] = 1
+            anagrams.append(word)
 
-        return K_Frequencey
+            for otherWord in strs:
+                anotherSeen = {}
+                for i in otherWord:
+                    if i in anotherSeen:
+                        anotherSeen[i] = anotherSeen.get(i) +1
+                    else:
+                        anotherSeen[i] = 1
+
+                if seen == anotherSeen:
+                    anagrams.append(otherWord)
+                    strs.remove(otherWord)
+
+            groupedAnagrams.append(anagrams)
+        
+        return groupedAnagrams
 
 
 sol = Solution()
-nums = [3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6]
-k = 10
-print(f"The solution is {sol.topKFrequent(nums,k)}")
+words = ["eat","tea","tan","ate","nat","bat"]
+print(f"The solution is {sol.groupAnagrams(words)}")
