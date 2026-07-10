@@ -7,7 +7,7 @@ class Solution:
         
         nums.sort()
 
-        
+        #To calculate the frequency of the elements
         elementFrequency = {}
 
         for i in nums:
@@ -16,6 +16,7 @@ class Solution:
             else:
                 elementFrequency[i] = 1
         
+        #Loop k times, every loop will drop the highest from elementFrequency, and add it to K_Frequencey k times
         K_Frequencey = []
         while k != 0 :
             highestFreq = 0
