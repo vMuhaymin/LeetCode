@@ -1,42 +1,40 @@
+
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-
-        groupedAnagrams = []
         
-        if len(strs) == 1:
-            groupedAnagrams.append(strs)
-            return groupedAnagrams
+        groupedAnagram = []
+        while strs:
+            sameAnagrams = []
+            word = strs.pop(0)
+            sameAnagrams.append(word)
 
-        while len(strs) >= 1 :
-            anagrams = []
+            listOfLetters = []
+            for i in word:
+                listOfLetters.append(i)
             
-            seen = {}
-            word = strs.pop()
-            anagrams.append(word)
+            
+            for i in strs[:]:
 
-            for j in word:
-                if j in seen:
-                    seen[j] = seen.get(j) +1 
-                else:
-                    seen[j] = 1
+                valid = True
+                
+                for j in i:
+                    if valid: 
+                        if j in listOfLetters:
+                            listOfLetters.remove(j)
+                        else:
+                            valid = False
 
-            for otherWord in strs[:]:
-                anotherSeen = {}
-                for i in otherWord:
-                    if i in anotherSeen:
-                        anotherSeen[i] = anotherSeen.get(i) +1
-                    else:
-                        anotherSeen[i] = 1
+                if valid:
+                    print(i)
+                    sameAnagrams.append(i)
+                    strs.remove(i)
+                 
+            groupedAnagram.append(sameAnagrams)
 
-                if seen == anotherSeen:
-                    anagrams.append(otherWord)
-                    strs.remove(otherWord)
-
-            groupedAnagrams.append(anagrams)
-        
-        return groupedAnagrams
+        return groupedAnagram
 
 
 sol = Solution()
-words = ["","",""]
-print(f"The solution is {sol.groupAnagrams(words)}")
+words = ["eat","tea","tan","ate","nat","bat"]
+
+print(f"The result is {sol.groupAnagrams(words)}")

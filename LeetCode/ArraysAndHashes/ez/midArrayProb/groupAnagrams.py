@@ -2,12 +2,8 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
         groupedAnagrams = []
-        
-        if len(strs) == 1:
-            groupedAnagrams.append(strs)
-            return groupedAnagrams
 
-        while len(strs) >= 1 :
+        while strs:
             anagrams = []
             
             seen = {}
@@ -20,7 +16,7 @@ class Solution:
                 else:
                     seen[j] = 1
 
-            for otherWord in strs:
+            for otherWord in strs[:]:
                 anotherSeen = {}
                 for i in otherWord:
                     if i in anotherSeen:
@@ -35,5 +31,8 @@ class Solution:
             groupedAnagrams.append(anagrams)
         
         return groupedAnagrams
+    
 
-
+sol = Solution()
+words = ["","",""]
+print(f"The solution is {sol.groupAnagrams(words)}")
