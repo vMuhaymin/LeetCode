@@ -18,7 +18,11 @@ class Solution:
             
             for otherWord in strs[:]:
 
-                valid = True
+                if len(otherWord) != len(word):
+                    valid = False
+                else:
+                    valid = True
+
                 newList = []
                 for letter in listOfLetters:
                     newList.append(letter)
@@ -26,12 +30,8 @@ class Solution:
                 
                 for j in otherWord:
                     if valid: 
-                        if j in newList:
-                            if len(j) == len(word):
-                                newList.remove(j)
-                                print(j)
-                            else:
-                                valid= False
+                        if j in newList:               
+                            newList.remove(j)
                         else:
                             valid = False
 
@@ -45,6 +45,6 @@ class Solution:
 
 
 sol = Solution()
-words =["ac","c"]
+words =["eat","tea","tan","ate","nat","bat"]
 
 print(f"The result is {sol.groupAnagrams(words)}")
