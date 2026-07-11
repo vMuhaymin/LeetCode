@@ -1,3 +1,4 @@
+
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
@@ -10,28 +11,33 @@ class Solution:
             sameAnagrams.append(word)
 
             listOfLetters = []
+
             for i in word:
                 listOfLetters.append(i)
             
             
             for otherWord in strs[:]:
 
-                valid = True
-                newList = []
-                for letter in listOfLetters:
-                    newList.append(letter)
-                
-                for j in otherWord:
-                    if valid: 
-                        if j in newList:
-                            newList.remove(j)
-                        else:
-                            valid = False
-
+                if len(otherWord) != len(word):
+                    valid = False
+                else:
+                    valid = True
                 if valid:
+                    newList = []
+                    for letter in listOfLetters:
+                        newList.append(letter)
+                        
                     
-                    sameAnagrams.append(otherWord)
-                    strs.remove(otherWord)
+                    for j in otherWord:
+                        if valid: 
+                            if j in newList:               
+                                newList.remove(j)
+                            else:
+                                valid = False
+
+                    if valid:
+                        sameAnagrams.append(otherWord)
+                        strs.remove(otherWord)
                  
             groupedAnagram.append(sameAnagrams)
 
