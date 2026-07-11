@@ -11,6 +11,7 @@ class Solution:
             sameAnagrams.append(word)
 
             listOfLetters = []
+
             for i in word:
                 listOfLetters.append(i)
             
@@ -21,16 +22,20 @@ class Solution:
                 newList = []
                 for letter in listOfLetters:
                     newList.append(letter)
+                    
                 
                 for j in otherWord:
                     if valid: 
                         if j in newList:
-                            newList.remove(j)
+                            if len(j) == len(word):
+                                newList.remove(j)
+                                print(j)
+                            else:
+                                valid= False
                         else:
                             valid = False
 
                 if valid:
-                    
                     sameAnagrams.append(otherWord)
                     strs.remove(otherWord)
                  
@@ -40,6 +45,6 @@ class Solution:
 
 
 sol = Solution()
-words =["a"]
+words =["ac","c"]
 
 print(f"The result is {sol.groupAnagrams(words)}")
