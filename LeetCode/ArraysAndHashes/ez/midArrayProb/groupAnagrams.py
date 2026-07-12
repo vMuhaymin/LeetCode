@@ -1,44 +1,14 @@
-
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    def groupAnagrams(self, strs):
 
+        groupedAnagram = {}
         
-        groupedAnagram = []
-        while strs:
-            sameAnagrams = []
+        for word in strs:
+            sortedLetters = "".join(sorted(word))
 
-            word = strs.pop(0)
-            sameAnagrams.append(word)
+            if sortedLetters not in groupedAnagram:
+                groupedAnagram[sortedLetters] = [word]
+            else:
+                groupedAnagram.get(sortedLetters).append(word)
 
-            listOfLetters = []
-
-            for i in word:
-                listOfLetters.append(i)
-            
-            
-            for otherWord in strs[:]:
-
-                if len(otherWord) != len(word):
-                    valid = False
-                else:
-                    valid = True
-                if valid:
-                    newList = []
-                    for letter in listOfLetters:
-                        newList.append(letter)
-                        
-                    
-                    for j in otherWord:
-                        if valid: 
-                            if j in newList:               
-                                newList.remove(j)
-                            else:
-                                valid = False
-
-                    if valid:
-                        sameAnagrams.append(otherWord)
-                        strs.remove(otherWord)
-                 
-            groupedAnagram.append(sameAnagrams)
-
-        return groupedAnagram
+        return list(groupedAnagram.values())
