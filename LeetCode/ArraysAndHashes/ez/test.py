@@ -1,7 +1,5 @@
 class heap:
-
     nodes = []
-
     def __init__(self, list):
         for node in list:
             self.add(node)
@@ -52,8 +50,6 @@ class heap:
     def insert(self, node):
         self.nodes.append(node)
         self.heapify()
-
-
 
 
 unsorted_array = [100, 230, 44, 1, 74, 12013, 84]
