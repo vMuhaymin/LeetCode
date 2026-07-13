@@ -25,11 +25,13 @@ class heap:
         self.nodes[firstI] , self.nodes[sencondI] =  self.nodes[sencondI], self.nodes[firstI]
         
     def heapify(self, child = None):
-
-        if not child :
-            child = len(self.nodes) - 1
+        
         if child == 0:
             return self.nodes
+        
+        if not child :
+            child = len(self.nodes) - 1
+
         parent = self.getParentIndex(child)
         if self.nodes[parent] and self.nodes[parent] > self.nodes[child] :
             self.swap(parent, child)
@@ -56,10 +58,8 @@ class heap:
 
 unsorted_array = [100, 230, 44, 1, 74, 12013, 84]
 unsorted_array2 = [100, 19, 36,17,3,25,1,2,7]
-myHeap = heap(unsorted_array2)
-myHeap.delete(1)
-myHeap.insert(1)
+myHeap = heap(unsorted_array)
 print(myHeap.getheap())
 
 
-            
+         
