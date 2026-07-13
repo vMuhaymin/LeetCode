@@ -1,23 +1,51 @@
+class heap:
 
-class Solution:
-    def groupAnagrams(self, strs):
+    nodes = []
 
+    def __init__(self, list):
+        for node in list:
+            self.add(node)
+    
+    def getParentIndex(self, index):
+        return (index-1)//2
+    
+    def getLchildIndex(self, index):
+        return (2* index +1)
+
+    def getRchildIndex(self, index):
+        return (2* index +2)
+
+    def getRchild(self, index):
+        return self.nodes[(2* index +2)]
+
+    def swap(self, firstI , sencondI):
+        heapLen = len(self.nodes) 
+        if firstI >= heapLen or sencondI >= heapLen:
+            print("Error: Out of Index !!")
+        self.nodes[firstI] , self.nodes[sencondI] =  self.nodes[sencondI], self.nodes[firstI]
         
-        groupedAnagram = {}
-        
+    def heapify(self, child = None):
 
-        for word in strs:
-            sortedLetters = "".join(sorted(word))
+        if not child :
+            child = len(self.nodes) - 1
+        parent = self.getParentIndex(child)
+        if self.nodes[parent] and self.nodes[parent] > self.nodes[child] :
+            self.swap(parent, child)
+            self.heapify(parent)
+        return self.nodes
 
-            if sortedLetters not in groupedAnagram:
-                groupedAnagram[sortedLetters] = [word]
-            else:
-                groupedAnagram.get(sortedLetters).append(word)
+    def add(self, node):
+        self.nodes.append(node)
+        self.heapify()
 
-        return list(groupedAnagram.values())
+    def getheap(self):
+        return self.nodes
 
+unsorted_array = [100, 230, 44, 1, 74, 12013, 84]
+unsorted_array2 = [100, 19, 36,17,3,25,1,2,7]
+myHeap = heap(unsorted_array2)
 
-sol = Solution()
-words =["eat","tea","tan","ate","nat","bat"]
+print(myHeap.getheap())
+print(myHeap.getRchild(2))
 
-print(f"The result is {sol.groupAnagrams(words)}")
+            
