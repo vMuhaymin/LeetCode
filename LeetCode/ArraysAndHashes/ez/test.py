@@ -28,6 +28,8 @@ class heap:
 
         if not child :
             child = len(self.nodes) - 1
+        if child == 0:
+            return self.nodes
         parent = self.getParentIndex(child)
         if self.nodes[parent] and self.nodes[parent] > self.nodes[child] :
             self.swap(parent, child)
@@ -40,12 +42,24 @@ class heap:
 
     def getheap(self):
         return self.nodes
+    
+    def delete(self, node):
+        self.nodes.remove(1)
+        self.heapify()
+
+    def insert(self, node):
+        self.nodes.append(node)
+        self.heapify()
+
+
+
 
 unsorted_array = [100, 230, 44, 1, 74, 12013, 84]
 unsorted_array2 = [100, 19, 36,17,3,25,1,2,7]
 myHeap = heap(unsorted_array2)
-
+myHeap.delete(1)
+myHeap.insert(1)
 print(myHeap.getheap())
-print(myHeap.getRchild(2))
+
 
             
