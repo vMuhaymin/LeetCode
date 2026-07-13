@@ -26,6 +26,7 @@ class Heap:
             self.heapify(parent)
         return self.nodes
     
+    #Require to add few healper method (Reverse heapify for deletion)
     def delete(self, index: None):
 
         if not index:
