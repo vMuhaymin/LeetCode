@@ -1,61 +1,19 @@
-class heap:
-    nodes = []
-    def __init__(self, list):
-        for node in list:
-            self.add(node)
-    
-    def getParentIndex(self, index):
-        return (index-1)//2
-    
-    def getLchildIndex(self, index):
-        return (2* index +1)
-
-    def getRchildIndex(self, index):
-        return (2* index +2)
-
-    def getRchild(self, index):
-        return self.nodes[(2* index +2)]
-
-    def swap(self, firstI , sencondI):
-        heapLen = len(self.nodes) 
-        if firstI >= heapLen or sencondI >= heapLen:
-            print("Error: Out of Index !!")
-        self.nodes[firstI] , self.nodes[sencondI] =  self.nodes[sencondI], self.nodes[firstI]
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        n = len(nums)
+        suffix= [1] * n
         
-    def heapify(self, child = None):
+
+        for i in range(n-2, -1 , -1):
+            suffix[i] = nums[i+1] * suffix[i+1]
+            print(f"Tha value of i = {i} and suffix of i is = {nums[i]}")
+            
         
-        if child == 0:
-            return self.nodes
-        
-        if not child :
-            child = len(self.nodes) - 1
+        print(suffix)
 
-        parent = self.getParentIndex(child)
-        if self.nodes[parent] and self.nodes[parent] > self.nodes[child] :
-            self.swap(parent, child)
-            self.heapify(parent)
-        return self.nodes
-
-    def add(self, node):
-        self.nodes.append(node)
-        self.heapify()
-
-    def getheap(self):
-        return self.nodes
-    
-    def delete(self, node):
-        self.nodes.remove(1)
-        self.heapify()
-
-    def insert(self, node):
-        self.nodes.append(node)
-        self.heapify()
-
-
-unsorted_array = [100, 230, 44, 1, 74, 12013, 84]
-unsorted_array2 = [100, 19, 36,17,3,25,1,2,7]
-myHeap = heap(unsorted_array)
-print(myHeap.getheap())
-
-
-         
+sol = Solution ()
+sol.productExceptSelf([1,2,3,4])
