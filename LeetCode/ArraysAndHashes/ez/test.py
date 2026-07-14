@@ -6,14 +6,15 @@ class Solution(object):
         """
         n = len(nums)
         suffix= [1] * n
-        
+        prefix = [1] * n
 
         for i in range(n-2, -1 , -1):
             suffix[i] = nums[i+1] * suffix[i+1]
-            print(f"Tha value of i = {i} and suffix of i is = {nums[i]}")
-            
+        for i in range(1, n):
+            prefix[i] = prefix[i-1] * nums[i-1]
         
-        print(suffix)
+        result = [prefix[i] * suffix[i] for i in range(n)]  
+        print(result)
 
 sol = Solution ()
-sol.productExceptSelf([1,2,3,4])
+sol.productExceptSelf([2, 3, 4, 5] )
