@@ -4,9 +4,9 @@ encoded = []
 for ch in word:
     encoded.append(ord(ch))
 
-print(encoded)
 
 decoded = []
+meow = ["ss" , 'Ssdas ']
 word = ""
 for i in range(len(encoded)):
     if encoded[i] == 32 or i == len(encoded) -1:
@@ -20,4 +20,7 @@ for i in range(len(encoded)):
         word = ""
     else:
         word += chr(encoded[i])
-print(decoded)
+
+meow = decoded
+
+print(meow)
