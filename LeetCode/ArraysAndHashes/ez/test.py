@@ -2,25 +2,15 @@ word = "Hello Word"
 encoded = []
 
 for ch in word:
-    encoded.append(ord(ch))
+    encoded.append(str(ord(ch)))
 
 
 decoded = []
-meow = ["ss" , 'Ssdas ']
-word = ""
-for i in range(len(encoded)):
-    if encoded[i] == 32 or i == len(encoded) -1:
-        
-        if i == len(encoded) -1 :
-            word += chr(encoded[i])
-            decoded.append(word)
-        else:
-            decoded.append(word)
-        
-        word = ""
-    else:
-        word += chr(encoded[i])
 
-meow = decoded
 
-print(meow)
+word = ''
+for ch in encoded:
+    print(chr(int(ch)))
+    word +=(chr(int(ch)))
+print(word)
+print(word.split(" "))
