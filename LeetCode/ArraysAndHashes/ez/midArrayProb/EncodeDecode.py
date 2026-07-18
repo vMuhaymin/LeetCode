@@ -9,8 +9,7 @@ class Solution:
     def decode(self, s: str) -> List[str]:
         word= ""
         for ch in s:
-            word.join(int(ch))
+            word += chr(int(ch))
         s = [word]
         return s.split(' ')
-        
         

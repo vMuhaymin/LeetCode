@@ -1,16 +1,30 @@
-word = "Hello Word"
-encoded = []
+class Solution:
 
-for ch in word:
-    encoded.append(str(ord(ch)))
+    def encode(self, strs: List[str]) -> str:
+        encoded = []
+        for word in strs:
+            for ch in word:
+                encoded.append(str(ord(ch)))
+            encoded.append(str(ord(" ")))
+        encoded.pop()
+        return encoded
 
+    def decode(self, s: str) -> List[str]:
+        word= ""
+        for ch in s:
+            word += chr(int(ch))
+        s = word.split(' ')
+        return s
+        
+        
 
-decoded = []
+sol = Solution()
+strs=["Hello","World"]
 
+encoded = sol.encode(strs)
+print(encoded)
 
-word = ''
-for ch in encoded:
-    print(chr(int(ch)))
-    word +=(chr(int(ch)))
-print(word)
-print(word.split(" "))
+decoded = sol.decode(encoded)
+print(decoded)
+
+        
