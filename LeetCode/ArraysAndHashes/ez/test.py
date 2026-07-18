@@ -1,16 +1,23 @@
 word = "Hello Word"
+encoded = []
 
-ls = []
 for ch in word:
-    ls.append(ord(ch))
-print(ls)
-la =[]
+    encoded.append(ord(ch))
+
+print(encoded)
+
+decoded = []
 word = ""
-for ch in ls:
-    if ch == 32:
-        la.append(word)
+for i in range(len(encoded)):
+    if encoded[i] == 32 or i == len(encoded) -1:
+        
+        if i == len(encoded) -1 :
+            word += chr(encoded[i])
+            decoded.append(word)
+        else:
+            decoded.append(word)
+        
         word = ""
     else:
-        word+= chr(ch)
-
-print(la)
+        word += chr(encoded[i])
+print(decoded)
