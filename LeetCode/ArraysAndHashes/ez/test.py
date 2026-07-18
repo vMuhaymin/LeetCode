@@ -1,20 +1,16 @@
-class Solution(object):
-    def productExceptSelf(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        n = len(nums)
-        suffix= [1] * n
-        prefix = [1] * n
+word = "Hello Word"
 
-        for i in range(n-2, -1 , -1):
-            suffix[i] = nums[i+1] * suffix[i+1]
-        for i in range(1, n):
-            prefix[i] = prefix[i-1] * nums[i-1]
-        
-        result = [prefix[i] * suffix[i] for i in range(n)]  
-        print(result)
+ls = []
+for ch in word:
+    ls.append(ord(ch))
+print(ls)
+la =[]
+word = ""
+for ch in ls:
+    if ch == 32:
+        la.append(word)
+        word = ""
+    else:
+        word+= chr(ch)
 
-sol = Solution ()
-sol.productExceptSelf([2, 3, 4, 5] )
+print(la)
