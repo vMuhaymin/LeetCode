@@ -26,17 +26,17 @@ class Solution:
                 letter += ch
 
         return words
-        
-        
 
 sol = Solution()
-strs=["Hello","World"]
+strs=["Muhaymin"]
 
 encoded = sol.encode(strs)
 print(f"The encoded is {encoded}")
+print("-----------------------")
 
 decoded = sol.decode(encoded)
 print(f"The decoded is {decoded}")
+print("-----------------------")
 
 # class Solution:
 
