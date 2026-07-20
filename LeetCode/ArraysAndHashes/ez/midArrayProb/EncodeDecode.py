@@ -1,15 +1,23 @@
 class Solution:
 
     def encode(self, strs: List[str]) -> str:
-        encoded = []
-        for word in strs:
+        counter = len (strs)
+        while counter > 0:
+            word = strs.pop(0)
+            if counter != 1 :
+                word +=" "
             for ch in word:
-                encoded.append(str(ord(ch)))
+                strs.append(str(ord(ch)))
+            counter-=1
+        return strs 
 
     def decode(self, s: str) -> List[str]:
         word= ""
-        for ch in s:
-            word += chr(int(ch))
-        s = [word]
-        return s.split(' ')
+        while s:
+            cara = s.pop(0)
+            word += chr(int(cara))  
+        words = word.split(' ')
+        for word in words:
+            s.append(word)
+        return s 
         
