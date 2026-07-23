@@ -1,71 +1,41 @@
-class Solution:
-
-    def encode(self, strs) -> str:
-        encoded =""
-        for word in strs:
-            for ch in word:
-                encoded+= str(ord(ch))
-                encoded += str('#')
-            encoded += str('!')
-            
-        return encoded
-
-    def decode(self, s: str):
-        word= ""
-        letter  = ""
-        words = [] 
-
-        for ch in s:
-            if ch == "!":
-                words.append(word)
-                word = ""
-            elif ch == "#":
-                word += chr(int(letter))
-                letter= ""
-            else: 
-                letter += ch
-
-        return words
+import heapq
+class Solution(object):
+    def longestConsecutive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums)<= 1:
+            return 0
+        
+        heapq.heapify(nums)
+        root = heapq.heappop(nums)
+        LC = []
+        highest = 1
+        while nums:
+            LC.append(root)
+            secNum = heapq.heappop(nums)
+            difference = abs(root - secNum)
+            if ( difference == 0 or difference == 1):
+                if difference ==1:
+                    LC.append(secNum)
+                    if len(LC) > highest:
+                        highest = len(LC)
+                    print(LC)
+            else:
+                LC = []
+            if nums:
+                root = heapq.heappop(nums)
+        return highest
 
 sol = Solution()
-strs=["Muhaymin"]
+nums =[1,1 , 2]
+print(f"The num of consec is {sol.longestConsecutive(nums)}")
 
-encoded = sol.encode(strs)
-print(f"The encoded is {encoded}")
-print("-----------------------")
-
-decoded = sol.decode(encoded)
-print(f"The decoded is {decoded}")
-print("-----------------------")
-
-# class Solution:
-
-#     def encode(self, strs) -> str:
-
-#         counter = len (strs)
-#         while counter > 0:
-#             word = strs.pop(0)
-#             if counter != 1 :
-#                 word +=" "
-#             for ch in word:
-#                 strs.append(str(ord(ch)))
-#             counter-=1
+                
+            
 
 
-#     def decode(self, s: str):
-#         word= ""
-#         while s:
-#             cara = s.pop(0)
-#             word += chr(int(cara))  
-#         words = word.split(' ')
-#         for word in words:
-#             s.append(word)
+
 
         
-# sol = Solution()
-# strs=["Hello","World"]
-
-# encoded = sol.encode(strs)
-# print(f"The encoded is {strs}")
-# decoded = sol.decode(strs)
-# print(f"The decoded is {strs}")
