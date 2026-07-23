@@ -10,35 +10,39 @@ class Solution(object):
         
         heapq.heapify(nums)
         root = heapq.heappop(nums)
-        LC = []
+        LC = {root}
         highest = 1
         while nums:
-            LC.append(root)
+            
             secNum = heapq.heappop(nums)
             difference = abs(root - secNum)
             if ( difference == 0 or difference == 1):
                 if difference ==1:
-                    LC.append(secNum)
+                    print(f'the two num are {root} and { secNum}')
+                    LC.add(secNum)
                     if len(LC) > highest:
                         highest = len(LC)
                     print(LC)
             else:
-                LC = []
+                LC = {}
             if nums:
                 root = heapq.heappop(nums)
+                LC.add(root)
                 if not nums:
                     difference = abs(root - secNum)
                     if ( difference == 0 or difference == 1):
+                        print(f'the two num are {root} and { secNum}')
                         if difference ==1:
-                            LC.append(secNum)
+                            LC.add(secNum)
                             if len(LC) > highest:
                                 highest = len(LC)
                             print(LC)
+            
         return highest
 
 
 sol = Solution()
-nums =[1,-1, -2 ]
+nums =[1,0,1, 2]
 print(f"The num of consec is {sol.longestConsecutive(nums)}")
 
                 
