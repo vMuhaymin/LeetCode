@@ -28,6 +28,7 @@ class Solution(object):
                 root = heapq.heappop(nums)
         return highest
 
+
 sol = Solution()
 nums =[1,1 , 2]
 print(f"The num of consec is {sol.longestConsecutive(nums)}")
