@@ -26,11 +26,19 @@ class Solution(object):
                 LC = []
             if nums:
                 root = heapq.heappop(nums)
+                if not nums:
+                    difference = abs(root - secNum)
+                    if ( difference == 0 or difference == 1):
+                        if difference ==1:
+                            LC.append(secNum)
+                            if len(LC) > highest:
+                                highest = len(LC)
+                            print(LC)
         return highest
 
 
 sol = Solution()
-nums =[1,1 , 2]
+nums =[1,-1, -2 ]
 print(f"The num of consec is {sol.longestConsecutive(nums)}")
 
                 
