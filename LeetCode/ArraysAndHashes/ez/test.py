@@ -1,50 +1,76 @@
-import heapq
 class Solution(object):
-    def longestConsecutive(self, nums):
+    def isValidSudoku(self, board):
         """
-        :type nums: List[int]
-        :rtype: int
+        :type board: List[List[str]]
+        :rtype: bool
         """
-        if not nums:
-            return 0
-        if len(nums)<= 1:
-            return 1
-        
-        heapq.heapify(nums)
-        root = heapq.heappop(nums)
-        LC = {root}
-        highest = 1
-        while nums:
-            
-            secNum = heapq.heappop(nums)
-            difference = abs(root - secNum)
-            if (difference == 0 or difference == 1):
-                if difference ==1:
-                    print(f'the two num are {root} and { secNum}')
-                    LC.add(secNum)
-                    if len(LC) > highest:
-                        highest = len(LC)
-                    print(LC)
-                flag = False
-            else:
-                flag = True
-                print(f"The nums are {secNum} and {root} flag is = {flag}")
-                if flag:
-                    LC = {root}
-            root = secNum
 
-            
-        return highest
+        row = {0}
+        col = {0}
+
+        #Checking for all rows and columns
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != ".":
+                    num = int(board[i][j])
+                    if num in row:
+                        return False
+                    else:
+                        row.add(num)
+            row = {0}
+            for k in range(9):
+                if board[k][i] != ".":
+                    numCol = int(board[k][i])
+                    if numCol in col:
+                        return False
+                    else:
+                        col.add(numCol)
+            col = {0}
+
+        square = {0}
+        baseRow = 0
+        round = 1
+
+        #Checking for all 3 by 3 squares
+        while round <= 3:
+            for i in range(0, 9 , 3):
+                rowStart = baseRow
+                for j in range(3):
+                    for k in range(i, i+3):
+                        if board[rowStart][k] != ".":
+                            num = int(board[rowStart][k])
+                            if num in square:
+                                return False
+                            else:
+                                square.add(num)
+                    rowStart += 1
+                square = {0}
+
+            round +=1
+            square={0}
+            baseRow +=3
+
+        
+        return True
+
 
 
 sol = Solution()
-nums = [100,4,200,1,3,2]
-print(f"The num of consec is {sol.longestConsecutive(nums)}")
+res = sol.isValidSudoku([["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]])
 
-                
-            
+print(f"The result is {res}")
 
 
+    
 
+    
 
-        
+     
