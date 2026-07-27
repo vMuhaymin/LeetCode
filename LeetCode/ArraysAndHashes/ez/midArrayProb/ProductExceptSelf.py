@@ -15,3 +15,4 @@ class Solution(object):
         
         result = [prefix[i] * suffix[i] for i in range(n)]  
         return result
+    
