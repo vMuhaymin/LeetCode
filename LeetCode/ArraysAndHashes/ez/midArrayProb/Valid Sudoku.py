@@ -29,21 +29,33 @@ class Solution(object):
 
         
         square = {0}
-        rowStart = 0
-        while rowStart <= 6:
+        baseRow = 0
+        round = 1
+        while round <= 3:
 
-            for i in range(3,9,3):
-                for j in range(rowStart,i):
-                    if board[rowStart][i] != ".":
-                        num = int(board[rowStart][i])
-                        print(num)
-                        if num in square:
-                            print(num)
-                            return False
-                        else:
-                            square.add(num)
+            for i in range(0, 9 , 3):
+                rowStart = baseRow
+                for j in range(3):
+                   
+                    for k in range(i, i+3):
+                        if board[rowStart][k] != ".":
+                            num = int(board[rowStart][k])
+
+                            if num in square:
+                               
+                                return False
+                            else:
+                                print(f"The is {num} added")
+                                square.add(num)
+                    rowStart += 1
+                print(f"The num is {num}, and the curr set is {square}")
                 square = {0}
-            rowStart += 3
+
+            round +=1
+            square={0}
+            baseRow +=3
+
+
 
         
         return True
@@ -51,16 +63,15 @@ class Solution(object):
 
 
 sol = Solution()
-res = sol.isValidSudoku([[".",".",".",".","5",".",".","1","."],
-                         [".","4",".","3",".",".",".",".","."],
-                         [".",".",".",".",".","3",".",".","1"],
-                         ["8",".",".",".",".",".",".","2","."],
-                         [".",".","2",".","7",".",".",".","."],
-                         [".","1","5",".",".",".",".",".","."],
-                         [".",".",".",".",".","2",".",".","."],
-                         [".","2",".","9",".",".",".",".","."],
-                         [".",".","4",".",".",".",".",".","."]]
-)
+res = sol.isValidSudoku([["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]])
 
 print(f"The result is {res}")
 
