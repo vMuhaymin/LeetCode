@@ -27,40 +27,40 @@ class Solution(object):
                         col.add(numCol)
             col = {0}
 
-        prev = 0
-        bCol = 3
-        bRow = 3
+        
         square = {0}
-        while bCol != 12 and bRow != 12:
-            for i in range(prev,bCol):
-                for j in range(prev,bRow):
-                    if board[i][j] != ".":
-                        num = int(board[i][j])
+        rowStart = 0
+        while rowStart <= 6:
+
+            for i in range(3,9,3):
+                for j in range(rowStart,i):
+                    if board[rowStart][i] != ".":
+                        num = int(board[rowStart][i])
+                        print(num)
                         if num in square:
+                            print(num)
                             return False
                         else:
                             square.add(num)
-            
-            prev = bCol
-            bCol += 3 
-            bRow +=3
-            square = {0}
+                square = {0}
+            rowStart += 3
+
         
         return True
 
 
 
 sol = Solution()
-res = sol.isValidSudoku(
-[["5","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8","2","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]])
+res = sol.isValidSudoku([[".",".",".",".","5",".",".","1","."],
+                         [".","4",".","3",".",".",".",".","."],
+                         [".",".",".",".",".","3",".",".","1"],
+                         ["8",".",".",".",".",".",".","2","."],
+                         [".",".","2",".","7",".",".",".","."],
+                         [".","1","5",".",".",".",".",".","."],
+                         [".",".",".",".",".","2",".",".","."],
+                         [".","2",".","9",".",".",".",".","."],
+                         [".",".","4",".",".",".",".",".","."]]
+)
 
 print(f"The result is {res}")
 
