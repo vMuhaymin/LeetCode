@@ -1,4 +1,3 @@
-import heapq
 class Solution(object):
     def longestConsecutive(self, nums):
         """
@@ -35,16 +34,3 @@ class Solution(object):
 
             
         return highest
-
-
-sol = Solution()
-nums = [100,4,200,1,3,2]
-print(f"The num of consec is {sol.longestConsecutive(nums)}")
-
-                
-            
-
-
-
-
-        
