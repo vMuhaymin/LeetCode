@@ -4,23 +4,21 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        if s.strip(" ") == "" :
+        if s.strip(" ") == "" or len(s) == 1:
             return True
+
 
         s = s.lower()
 
         word= ""
         letters = {'a'}
-        for letter in "qwertyuiopsdfghjklzxcvbnm":
+        for letter in "qwertyuiopsdfghjklzxcvbnm1234567890":
             letters.add(letter)
         for ch in s:
             if ch in letters:
                 word += ch
-
-        if len(word) <= 0:
-            return False
-
-        
+        if len(word) == 1:
+            return True
         left = 0
         right = len(word) - 1 
         while left < right :
@@ -41,7 +39,7 @@ class Solution(object):
         
 
 sol = Solution()
-res = sol.isPalindrome(".")
+res = sol.isPalindrome("0a")
 
 print(f"The result is {res}")
 
