@@ -16,6 +16,11 @@ class Solution(object):
         for ch in s:
             if ch in letters:
                 word += ch
+
+        if len(word) <= 0:
+            return False
+
+        
         left = 0
         right = len(word) - 1 
         while left < right :
@@ -36,7 +41,7 @@ class Solution(object):
         
 
 sol = Solution()
-res = sol.isPalindrome("race a car")
+res = sol.isPalindrome(".")
 
 print(f"The result is {res}")
 
