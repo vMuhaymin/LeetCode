@@ -4,14 +4,14 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-
-        #Time: O(n), Space: O(n)
         tmp = ""
+        chars = []
         for ch in s:
             if ch.isalnum():
-                tmp+= ch
-
-        tmp = tmp.lower()
+                #tmp+= ch  makes it O(n), in Total O(n^2) !
+                chars.append(ch.lower())
+        #tmp = tmp.lower()
+        tmp  = tmp.join(chars)
         
         left = 0
         right = len(tmp) - 1 
