@@ -5,30 +5,18 @@ class Solution(object):
         :rtype: bool
         """
 
-
-
-        if s.strip(" ") == "" or len(s) == 1:
-            return True
-        s = s.lower()
-
-        word= ""
-        letters = {'a'}
-
-        #Removing all non-alphanumeric characters
-        for letter in "qwertyuiopsdfghjklzxcvbnm1234567890":
-            letters.add(letter)
+        #Time: O(n), Space: O(n)
+        tmp = ""
         for ch in s:
-            if ch in letters:
-                word += ch
+            if ch.isalnum():
+                tmp+= ch
 
-        if len(word) == 1:
-            return True
-
-        #2 Pointers
+        tmp = tmp.lower()
+        
         left = 0
-        right = len(word) - 1 
+        right = len(tmp) - 1 
         while left < right :
-            if word[left] != word[right]:
+            if tmp[left] != tmp[right]:
                 return False
             left += 1
             right -=1

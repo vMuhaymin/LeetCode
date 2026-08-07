@@ -1,18 +1,27 @@
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        tmp = ""
+        for ch in s:
+            if ch.isalnum():
+                tmp+= ch
 
-
-        if len(s)!=len(t):
-            return False
-
-        for x in set(s):
-            print(f's.count(x) is {s.count(x)} and t.count(x) is {t.count(x)}')
-            if s.count(x) != t.count(x):
-                print(f"s = {s} and t = {t}")
+        tmp = tmp.lower()
+        
+        left = 0
+        right = len(tmp) - 1 
+        while left < right :
+            if tmp[left] != tmp[right]:
                 return False
+            left += 1
+            right -=1
         return True
 
+    
 sol = Solution()
-print(f"The result is {sol.isAnagram("rat","car")}")
+print(f"The result is {sol.isPalindrome(" ")}")
                        
         
