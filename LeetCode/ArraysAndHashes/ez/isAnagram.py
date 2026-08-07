@@ -1,6 +1,21 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
 
+        """
+            O(n²)
+        if len(s) != len(t):
+            return False
+        for ch in s:
+            if s.count(ch) != t.count(ch):
+                return false
+        return True
+
+        """ 
+        #########################################
+        """
+            Dynamic Programming O(n) and Space O(n)
+        """
+
         if len(s) != len(t):
             return False
         
@@ -29,4 +44,5 @@ class Solution:
                 else: 
                     if freqT[i] != freqS[i]:
                         return False
-        return True 
+        return True
+
