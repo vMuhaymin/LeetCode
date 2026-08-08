@@ -19,15 +19,12 @@ class Solution(object):
             difference = abs(root - secNum)
             if (difference == 0 or difference == 1):
                 if difference ==1:
-                    print(f'the two num are {root} and { secNum}')
                     LC.add(secNum)
                     if len(LC) > highest:
                         highest = len(LC)
-                    print(LC)
                 flag = False
             else:
                 flag = True
-                print(f"The nums are {secNum} and {root} flag is = {flag}")
                 if flag:
                     LC = {root}
             root = secNum
