@@ -1,29 +1,30 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        tmp = ""
-        chars = []
-        for ch in s:
-            if ch.isalnum():
-                #tmp+= ch  makes it O(n), in Total O(n^2) !
-                chars.append(ch.lower())
-        #tmp = tmp.lower()
-        tmp  = tmp.join(chars)
-        
-        left = 0
-        right = len(tmp) - 1 
-        while left < right :
-            if tmp[left] != tmp[right]:
-                return False
-            left += 1
-            right -=1
-        return True
+class Solution:
 
-    
+    def encode(self, strs: List[str]) -> str:
+        res = []
+
+        for word in strs:
+            res.append(word)
+            res.append('#')
+
+        return "".join(res)
+
+    def decode(self, s: str) -> List[str]:
+
+        word = ""
+        res = []
+        for ch in s:
+            if ch == '#':
+                res.append(word)
+                word = ""
+            else:
+                word += ch
+
+        return res
+
 sol = Solution()
-print(f"The result is {sol.isPalindrome(" ")}")
-                       
-        
+enc = sol.encode(["w213e"])
+dec = sol.decode(enc)
+print(f"The encoded verision is : {enc}")
+print(f"The decoded verision is : {dec}")
+
