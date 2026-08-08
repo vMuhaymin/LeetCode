@@ -1,12 +1,12 @@
-class Solution:
-    def groupAnagrams(self, strs):
-        res = {}
+def longestConsecutive(nums):
+    nums = set(nums)
+    best = 0
+    for x in nums:
+        if x - 1 not in nums:
+            y = x + 1 
+            while y in nums:
+                y += 1
+            best = max(best , y - x)
+    return best
 
-        for word in strs:
-            sortedLetters = "".join(sorted(word))
-            if sortedLetters not in res:
-                res[sortedLetters] = [word]
-            else:
-                res.get(sortedLetters).append(word)
-
-        return list(res.values())
+print( f" Len = {longestConsecutive([100,4,200,1,3,2])} ")
