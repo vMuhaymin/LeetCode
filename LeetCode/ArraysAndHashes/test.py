@@ -1,12 +1,16 @@
-def longestConsecutive(nums):
-    nums = set(nums)
-    best = 0
-    for x in nums:
-        if x - 1 not in nums:
-            y = x + 1 
-            while y in nums:
-                y += 1
-            best = max(best , y - x)
-    return best
+class Solution(object):
+    def productExceptSelf(self, nums):
 
-print( f" Len = {longestConsecutive([100,4,200,1,3,2])} ")
+        p = [1] * len(nums)
+        s = [1] * len(nums)
+
+
+        p = 1
+        for i in range(1, len(nums) - 1):
+            p = p[i - 1 ] * nums[i - 1]
+        for i in range(len(nums)-2 , -1, -1):
+            s[i] = s[i+1] * nums[i+1]
+        return [s[i] * p[i] for i in range(len(nums))]
+
+sol = Solution()
+print(f"The result is {sol.productExceptSelf([1,2,3,4])}")

@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
+
         n = len(nums)
         suffix= [1] * n
         prefix = [1] * n
