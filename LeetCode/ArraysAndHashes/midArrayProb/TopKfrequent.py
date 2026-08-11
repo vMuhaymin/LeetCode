@@ -15,7 +15,7 @@ class Solution:
         res = []
         while heap:
             res.append(heapq.heappop(heap)[1])
-        return res[::-1]
+        return res[::-1] #list[start : stop : step]
 
         # Sapce occur = {}   # O(n) worst case
         # heap = []    # O(k)
