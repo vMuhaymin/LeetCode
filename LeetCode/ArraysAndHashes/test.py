@@ -6,10 +6,7 @@ class Solution(object):
         :rtype: List[int]
         """
 
-        if len(numbers) == 2 :
-            return [1,2]
-        i = 0
-        j = len(numbers) - 1
+        i, j = 0, len(numbers) - 1
         while i <= j :
             if numbers[i] + numbers[j] == target:
                 return [i+1 , j+1]
@@ -18,5 +15,4 @@ class Solution(object):
             elif numbers[i] + numbers[j] < target:
                 i += 1
 sol = Solution()
-
-print(f"Output : {sol.twoSum([-1000,-1,0,1], target = 1)}")
+print(f"Output : {sol.twoSum([0,1], target = 1)}")
