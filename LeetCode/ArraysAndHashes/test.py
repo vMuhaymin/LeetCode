@@ -1,20 +1,22 @@
-import heapq
-class Solution:
-    def topKFrequent(self, nums, k: int):
-        occur = {}
-        for num in nums:
-            occur[num] = occur.get(num, 0) + 1
-            
-        heap = []
-        for key in occur:
-            heapq.heappush(heap, (occur[key], key)) # One item is O(logn), whole items (nlogn)
-            if len(heap) > k :
-                heapq.heappop(heap)
-        res = []
-        while heap:
-            res.append(heapq.heappop(heap)[1])
-        return res[::-1]
+class Solution(object):
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
 
-
+        if len(numbers) == 2 :
+            return [1,2]
+        i = 0
+        j = len(numbers) - 1
+        while i <= j :
+            if numbers[i] + numbers[j] == target:
+                return [i+1 , j+1]
+            elif numbers[i] + numbers[j] > target:
+                j-=1
+            elif numbers[i] + numbers[j] < target:
+                i += 1
 sol = Solution()
-print(f"Output: {sol.topKFrequent([1,1,1,2,2,3], k = 2)}")
+
+print(f"Output : {sol.twoSum([-1000,-1,0,1], target = 1)}")
