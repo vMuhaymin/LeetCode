@@ -1,5 +1,27 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+
+        """ Better sol : Time = O((n * log k) Space = # O(n + k) = O(n)
+
+        occur = {}
+        for num in nums:
+            occur[num] = occur.get(num, 0) + 1
+            
+        heap = []
+        for key in occur:
+            heapq.heappush(heap, (occur[key], key)) # One item is O(logn), whole items (nlogn)
+            if len(heap) > k :
+                heapq.heappop(heap)
+        res = []
+        while heap:
+            res.append(heapq.heappop(heap)[1])
+        return res[::-1]
+
+        # Sapce occur = {}   # O(n) worst case
+        # heap = []    # O(k)
+        # res = []     # O(k)
+
+        """
         
         if len(nums) <= 1 or len(nums) == k:
             return nums
