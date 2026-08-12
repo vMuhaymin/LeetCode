@@ -1,18 +1,28 @@
 class Solution(object):
-    def twoSum(self, numbers, target):
+    def threeSum(self, nums):
         """
-        :type numbers: List[int]
-        :type target: int
-        :rtype: List[int]
+        :type nums: List[int]
+        :rtype: List[List[int]]
         """
+        res = []
+        for i in range(1,len(nums)-1):
+            L = 0, R  = 0 , len(nums) - 1
+            while L < i and i > R :
+                print("Active !")
+                if nums[i] + nums[L] + nums[R] == 0 :
+                    print(f"FOUND ! {[nums[L] ,nums[i] , nums[R]]}")
+                    res.append([nums[L] ,nums[i] , nums[R]])
+                if L < i and R > i :
+                    L+=1
+                    R+=1
+                elif L < i and R - 1 == i :
+                    L+=1
+                elif R > i and L + 1 == i:
+                    R+=1
+                else :
+                    L+=1 # Flag to stop
+        return res
 
-        i, j = 0, len(numbers) - 1
-        while i <= j :
-            if numbers[i] + numbers[j] == target:
-                return [i+1 , j+1]
-            elif numbers[i] + numbers[j] > target:
-                j-=1
-            elif numbers[i] + numbers[j] < target:
-                i += 1
 sol = Solution()
-print(f"Output : {sol.twoSum([0,1], target = 1)}")
+print(f"The result is : {sol.threeSum([-1,0,1,2,-1,-4])}")
+

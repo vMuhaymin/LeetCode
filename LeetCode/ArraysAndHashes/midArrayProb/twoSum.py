@@ -4,8 +4,10 @@ class Solution(object):
         :type numbers: List[int]
         :type target: int
         :rtype: List[int]
-        """
         
+        
+        """
+
         i = 0
         j = len(numbers) - 1
         while i <= j :
