@@ -6,22 +6,18 @@ class Solution(object):
         """
         res = []
         for i in range(1,len(nums)-1):
-            L , R  = 0 , len(nums) - 1
-            while L < i and i < R :
-                if nums[i] + nums[L] + nums[R] == 0 :
-                    print(f"FOUND ! {[nums[L] ,nums[i] , nums[R]]}")
-                    res.append([nums[L] ,nums[i] , nums[R]])
-                if L < i and R > i :
-                    L+=1
-                    R-=1
-                elif L < i and R - 1 == i :
-                    L+=1
-                elif R > i and L + 1 == i:
-                    R-=1
-                else :
-                    L+=1 # Flag to stop
+            L = 0
+
+            while L < i :
+                for j in range(i+1, len(nums)):
+                    if nums[i] + nums[L] + nums[j] == 0 :
+                        print(f"FOUND ! L = {nums[L]} i = {nums[i]} R = {nums[j]}")
+                        if [nums[L] ,nums[i] , nums[j]] not in res:
+                            res.append([nums[L] ,nums[i] , nums[j]])
+                L+=1                        
+
         return res
 
 sol = Solution()
-print(f"The result is : {sol.threeSum([-1,0,1,2,-1,-4])}")
+print(f"The result is : {sol.threeSum([0,1,1])}")
 

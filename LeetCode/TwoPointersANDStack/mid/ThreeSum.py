@@ -7,15 +7,12 @@ class Solution(object):
         res = []
         for i in range(1,len(nums)-1):
             L = 0
-
             while L < i :
                 for j in range(i+1, len(nums)):
                     if nums[i] + nums[L] + nums[j] == 0 :
-                        print(f"FOUND ! L = {nums[L]} i = {nums[i]} R = {nums[j]}")
                         if [nums[L] ,nums[i] , nums[j]] not in res:
                             res.append([nums[L] ,nums[i] , nums[j]])
                 L+=1                        
-
         return res
 
 sol = Solution()
