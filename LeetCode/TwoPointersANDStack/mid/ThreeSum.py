@@ -13,10 +13,9 @@ class Solution(object):
                     if nums[i] + nums[L] + nums[j] == 0  and  [nums[L] ,nums[i] , nums[j]] not in res:
                         res.append([nums[L] ,nums[i] , nums[j]])
                 L+=1
-
         return res
 
 
 sol = Solution()
-print(f"The result is : {sol.threeSum([0,0,0,0])}")
+print(f"The result is : {sol.threeSum([-100,-70,-60,110,120,130,160])}")
 
