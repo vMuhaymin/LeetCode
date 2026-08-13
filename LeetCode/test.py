@@ -11,19 +11,11 @@ class Solution(object):
         area = min(height[i],height[j]) * (j - i)
         while i < j:
             area = max(area, (min(height[i],height[j]) * (j - i)) )
-            if height[i + 1] > height[j-1]:
-                i+=1
-            elif height[i + 1] < height[j-1]:
+            if height[i] > height[j]:
                 j-=1
             else:
-                print(f"The heights are i[{i}] = {height[i]} j[{j}]= {height[j]}")
-                if height[i] > height[j]:
-                    print(f" j is chosen")
-                    j-=1
-                else:
-                    i+=1
-                    print(f" i is chosen")
+                i+=1
         return area
 
 sol = Solution()
-print(f"The max height = {sol.maxArea([1,2,4,3])}")
+print(f"The max height = {sol.maxArea([1,8,6,2,5,4,8,3,7])}")
