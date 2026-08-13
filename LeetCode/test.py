@@ -1,31 +1,29 @@
 class Solution(object):
-    def threeSum(self, nums):
+    def maxArea(self, height):
         """
-        :type nums: List[int]
-        :rtype: List[List[int]]
+        :type height: List[int]
+        :rtype: int
         """
+        if len(height) <=1:
+            return 1
 
-        res = []
-        nums.sort()
-        for i in range(len(nums)):
-            if i > 1 and nums[i-1] == nums[i]:
-                pass
-            j= i + 1
-            k = len(nums)-1
-
-            while j < k :
-                total = nums[i] + nums[j] + nums[k]
-                if total > 0:
-                    k-=1
-                elif total < 0:
-                    j+=1
+        i , j = 0, len(height) - 1
+        area = min(height[i],height[j]) * (j - i)
+        while i < j:
+            area = max(area, (min(height[i],height[j]) * (j - i)) )
+            if height[i + 1] > height[j-1]:
+                i+=1
+            elif height[i + 1] < height[j-1]:
+                j-=1
+            else:
+                print(f"The heights are i[{i}] = {height[i]} j[{j}]= {height[j]}")
+                if height[i] > height[j]:
+                    print(f" j is chosen")
+                    j-=1
                 else:
-                    res.append([nums[i],  nums[j] , nums[k]])
-                    j=j+1
-                    while nums[j-1] == nums[j] and j < k:
-                        j=j+1
-        return res
+                    i+=1
+                    print(f" i is chosen")
+        return area
 
 sol = Solution()
-print(f"The result is : {sol.threeSum([-100,-70,-60,110,120,130,160])}")
-
+print(f"The max height = {sol.maxArea([1,2,4,3])}")
