@@ -13,31 +13,28 @@ class Solution(object):
                 i+=1
                 continue
             j = len(height) - 1
-            # minHeight = min(height[i] , height[j])
-            # tempCount = minHeight * (j - i)
 
             minHeight = min(height[i] , height[j])
             tempCount =  minHeight * (j - i - 1)
             started_j = j 
             while  i < j - 1 :
                 j -= 1
-                if height[j] > height[i]:
+                if height[j] >= height[i]:
                     minHeight = min(height[i] , height[j])
                     tempCount =  minHeight * (j - i - 1)
-                elif height[started_j] < height[j] and height[i] >= height[j]:
+                    started_j = j
+                elif height[started_j] <= height[j]:
                     started_j = j 
                     minHeight = min(height[i] , height[j])
                     tempCount =  minHeight * (j - i - 1)
                 else:
                     tempCount = tempCount - height[j]
-            
-            print(f"The tempCount = {tempCount} and count = {count}")
-            count = count + tempCount
-            i = j
 
+            count = count + tempCount
+            i = started_j
         return count
 
 
 sol = Solution()
 
-print(f"Output: {sol.trap([0,1,0,2,1,0,1,3,2,1,2,1])}")
+print(f"Output: {sol.trap( [4,2,0,3,2,5])}")

@@ -13,8 +13,6 @@ class Solution(object):
                 i+=1
                 continue
             j = len(height) - 1
-            # minHeight = min(height[i] , height[j])
-            # tempCount = minHeight * (j - i)
 
             minHeight = min(height[i] , height[j])
             tempCount =  minHeight * (j - i - 1)
@@ -32,12 +30,9 @@ class Solution(object):
                 else:
                     tempCount = tempCount - height[j]
                     print(f"i = {i} and k = {j}")
-            
             count = count + tempCount
             print(f"The tempCount = {tempCount} and count = {count}")
-
             i = started_j
-
         return count
 
 
