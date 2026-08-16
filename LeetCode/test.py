@@ -1,6 +1,7 @@
 class Solution:
     def trap(self, height):
 
+        
         start = 0
         end = len(height) - 1
 
