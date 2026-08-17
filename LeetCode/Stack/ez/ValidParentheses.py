@@ -9,7 +9,6 @@ class Solution(object):
 
         if not s:
             return True
-
         res = []
         for i in s:
             if i in open:
@@ -24,5 +23,4 @@ class Solution(object):
                     return False
             else:
                 return False
-
         return len(res) == 0
