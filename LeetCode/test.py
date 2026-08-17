@@ -1,22 +1,31 @@
-class Solution:
-    def trap(self, height):
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        open = {'(', '{', '['}
+        close = {')', '}', ']'}
 
-        
-        start = 0
-        end = len(height) - 1
+        if not s:
+            return True
 
-        maxLeft = 0
-        maxRight = 0
-        totalWater = 0
-
-        while start < end :
-            maxLeft = max(maxLeft, height[start])
-            maxRight = max(maxRight, height[end])
-
-            if maxLeft < maxRight :
-                totalWater += maxLeft - height[start]
-                start += 1
+        valid = []
+        for i in s:
+            if i in open:
+                valid.append(i)
+                print(f'{i} is appended')
+            elif i in close and valid:
+                j = valid.pop()
+                print(f" i= {i} | j = {j}" )
+                if (j == '(' and i ==')' ) or (j == '{' and i =='}' ) or (j == '[' and i ==']' ):
+                    continue
+                else:
+                    return False
             else:
-                totalWater += maxRight - height[end]
-                end -=1
-        return totalWater
+                return False
+        return True
+
+sol = Solution()
+s ="()"
+print(f"Output: {sol.isValid(s)}")

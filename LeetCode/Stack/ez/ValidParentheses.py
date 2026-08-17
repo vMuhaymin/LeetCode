@@ -14,12 +14,19 @@ class Solution(object):
         for i in s:
             if i in open:
                 valid.append(i)
+                print(f'{i} is appended')
             else:
-                j = valid.pop()
-                if (i == '(' and j !=')' ) or (i == '{' and j !='}' ) or (i == '[' and j !=']' ):
+                if valid:
+                    j = valid.pop()
+                    print(f" i= {i} | j = {j}" )
+                    if (i == '(' and j ==')' ) or (i == '{' and j =='}' ) or (i == '[' and j ==']' ):
+                        continue
+                    else:
+                        return False
+                else:
                     return False
         return True
 
 sol = Solution()
-s ="([)]"
+s ="([])"
 print(f"Output: {sol.isValid(s)}")
