@@ -10,23 +10,19 @@ class Solution(object):
         if not s:
             return True
 
-        valid = []
+        res = []
         for i in s:
             if i in open:
-                valid.append(i)
+                res.append(i)
                 print(f'{i} is appended')
-            else:
-                if valid:
-                    j = valid.pop()
-                    print(f" i= {i} | j = {j}" )
-                    if (i == '(' and j ==')' ) or (i == '{' and j =='}' ) or (i == '[' and j ==']' ):
-                        continue
-                    else:
-                        return False
+            elif i in close and res:
+                j = res.pop()
+                print(f" i= {i} | j = {j}" )
+                if (j == '(' and i ==')' ) or (j == '{' and i =='}' ) or (j == '[' and i ==']' ):
+                    continue
                 else:
                     return False
-        return True
+            else:
+                return False
 
-sol = Solution()
-s ="([])"
-print(f"Output: {sol.isValid(s)}")
+        return len(res) == 0

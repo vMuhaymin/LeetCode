@@ -24,8 +24,10 @@ class Solution(object):
                     return False
             else:
                 return False
+        if valid:
+            return False
         return True
 
 sol = Solution()
-s ="()"
+s ="]]"
 print(f"Output: {sol.isValid(s)}")
