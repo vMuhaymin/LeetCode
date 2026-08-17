@@ -28,8 +28,6 @@ class Solution(object):
         
         """
 
-
-
         i = 0 
         count = 0
         while i < len(height) - 1:
