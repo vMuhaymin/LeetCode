@@ -2,7 +2,7 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         st = []
         for item in tokens:
-            if item not in {'+', '-','*','/'}:
+            if item not in "+-*/":
                 st.append(int(item))
             else:
                 match item:

@@ -8,7 +8,7 @@ class Solution(object):
         #Stack to keep track of the result
         st = []
         for item in tokens:
-            if item not in {'+', '-','*','/'}:
+            if item not in "+-*/":
                 st.append(int(item))
             else:
                 match item:
