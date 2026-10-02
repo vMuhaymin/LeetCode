@@ -1,17 +1,23 @@
 class Solution(object):
-    def dailyTemperatures(self, temperatures):
-
+    def carFleet(self, target, position, speed):
         """
-        :type temperatures: List[int]
-        :rtype: List[int]
-        """     
-        res = [0] * len(temperatures)
-        stack = []
+        :type target: int
+        :type position: List[int]
+        :type speed: List[int]
+        :rtype: int
+        """
+        fleet = {}
+        for i in range(len(position)):
+            addition = position[i] + speed[i]
+            if addition in fleet and target >= addition:
+                fleet[addition]= fleet.get(addition) + 1
+            elif target >= addition:
+                fleet[addition] = 0
 
-        for i, temp in enumerate(temperatures):
-            while stack and temperatures[stack[-1]] < temp :
-                curr = stack.pop()
-                res[curr] = i - curr 
-            stack.append(i)
+        print(fleet)
 
-        return res
+        return len(fleet)
+
+
+sol = Solution()
+print(f"res = {sol.carFleet(100, [0,2,4] , [4,2,1])}") 
