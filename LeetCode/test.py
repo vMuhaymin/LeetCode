@@ -6,18 +6,23 @@ class Solution(object):
         :type speed: List[int]
         :rtype: int
         """
-        fleet = {}
-        for i in range(len(position)):
-            addition = position[i] + speed[i]
-            if addition in fleet and target >= addition:
-                fleet[addition]= fleet.get(addition) + 1
-            elif target >= addition:
-                fleet[addition] = 0
+        pairs = []
+        stack = []
+        for i in range(len(speed)):
+            pairs.append([position[i], speed[i]])
 
-        print(fleet)
+        pairs = sorted(pairs)[::-1]
 
-        return len(fleet)
+        for d , t in pairs :
+            
+            time = float(target - d) / t
+            stack.append(time)
+            print(stack)
 
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+            
+        return len(stack)
 
 sol = Solution()
-print(f"res = {sol.carFleet(100, [0,2,4] , [4,2,1])}") 
+print(f"res = {sol.carFleet(12, [10,8,0,5,3] , [2,4,1,1,3])}") 
