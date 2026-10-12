@@ -1,28 +1,28 @@
 class Solution(object):
-    def carFleet(self, target, position, speed):
+    def search(self, nums, target):
         """
+        :type nums: List[int]
         :type target: int
-        :type position: List[int]
-        :type speed: List[int]
         :rtype: int
         """
-        pairs = []
-        stack = []
-        for i in range(len(speed)):
-            pairs.append([position[i], speed[i]])
+        l = 0
+        r = len(nums) - 1
+        mid = int(r/2)
+        print(f"mid is = {mid}")
 
-        pairs = sorted(pairs)[::-1]
-
-        for d , t in pairs :
-            
-            time = float(target - d) / t
-            stack.append(time)
-            print(stack)
-
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
-            
-        return len(stack)
+        while l <= r :
+            if target == nums[mid]:
+                return mid
+            elif target > nums[mid] :
+                l = mid + 1
+                mid = int((l + r)/2)
+                
+            else:
+                r = mid - 1
+                mid = int((l + r)/2)
+            print(f"mid is = {mid}")
+        return -1
 
 sol = Solution()
-print(f"res = {sol.carFleet(12, [10,8,0,5,3] , [2,4,1,1,3])}") 
+res = sol.search([-1,0,3,5,9,12], 9)
+print(f"Result is = {res}")
