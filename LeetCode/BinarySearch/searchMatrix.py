@@ -1,5 +1,8 @@
 class Solution:
     def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
+        """
+        Sol is Log(n * m)
+        """
         # row above, row below
         ra , rb = 0 , len(matrix) - 1
 
@@ -13,7 +16,6 @@ class Solution:
             #Checking the left upper segament 
             elif matrix[rmid][0] < target :
                 highest_row_num = len(matrix[rmid])-1
-
                 if matrix[rmid][highest_row_num] >= target:
                     print("pass")
                     while coll <= colr :
@@ -34,7 +36,6 @@ class Solution:
             else :
                 highest_row_num = len(matrix[rmid])-1
                 if matrix[rmid][highest_row_num ] >= target and matrix[rmid][0] <= target :
-                    
                     while coll <= colr :
                         cmid = ((coll + colr)//2)
                         if matrix[rmid][cmid] == target:
@@ -50,5 +51,3 @@ class Solution:
             rmid = ((ra + rb) // 2)
         return False
                     
-sol  = Solution()
-print(f"Does {3} exist? {sol.searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3)}")
