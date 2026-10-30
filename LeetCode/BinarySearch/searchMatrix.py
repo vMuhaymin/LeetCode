@@ -1,11 +1,12 @@
 class Solution:
     def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
+
         """
         Sol is Log(n * m)
         """
+        
         # row above, row below
         ra , rb = 0 , len(matrix) - 1
-
         # row mid
         rmid = (rb // 2)
         while ra <= rb :

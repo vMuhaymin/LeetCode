@@ -53,7 +53,5 @@ class Solution:
         return False
             
 
-
-                    
 sol  = Solution()
 print(f"Does {3} exist? {sol.searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3)}")
