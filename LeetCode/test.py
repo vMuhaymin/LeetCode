@@ -1,57 +1,28 @@
 class Solution:
-    def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
-        # row above, row below
-        ra , rb = 0 , len(matrix) - 1
+    def findMin(self, nums: list[int]) -> int:
 
-        # row mid
-        rmid = (rb // 2)
-        while ra <= rb :
-            coll , colr = 0 , len(matrix[rmid]) - 1
-            if matrix[rmid][0] == target :
-                return True
+        l, r = 0 , len(nums) - 1
+        mid = (l + r)// 2
 
-            #Checking the left upper segament 
-            elif matrix[rmid][0] < target :
-                highest_row_num = len(matrix[rmid])-1
-                print(f"The highest is {matrix[rmid][highest_row_num ]} , the col mid is {rmid}")
+        while l < r :
+            print(f"l ={l} , [{nums[l]}] || r = {r} ,[{nums[r]}] | mid= {mid} ,[{nums[mid]}]")
 
-                if matrix[rmid][highest_row_num] >= target:
-                    print("pass")
-                    while coll <= colr :
-                        cmid = ((coll + colr)//2)
-                        if matrix[rmid][cmid] == target:
-                            return True
-                        elif matrix[rmid][cmid] < target:
-                            coll = cmid + 1
-                        else:
-                            colr = cmid - 1
-                    return False
-                else:
-                    #updating the mid
-                    ra = rmid + 1
-                    print(f'ra = {ra} , rb = {rb} , mid = {rmid}')
+            if nums[l] < nums[mid] and nums[l] < nums[r] :
+                r = mid - 1
+                mid = (l + r) // 2
+            elif nums[r] < nums[mid] and nums[r] < nums[l] :
+                l = mid + 1
+                mid = (l + r) // 2
+            elif nums[l] <  nums[r] :
+                l = mid
+                mid = (l+ 1 + r) // 2
+            else:
+                r = mid
+                mid = (l+ r - 1) // 2 
 
-            #Checking the lower upper segament 
-            else :
-                highest_row_num = len(matrix[rmid])-1
-                print(f"The highest is {matrix[rmid][highest_row_num ]} , the col mid is {rmid} and {matrix[rmid][0] }")
-                if matrix[rmid][highest_row_num ] >= target and matrix[rmid][0] <= target :
-                    
-                    while coll <= colr :
-                        cmid = ((coll + colr)//2)
-                        if matrix[rmid][cmid] == target:
-                            return True
-                        elif matrix[rmid][cmid] < target:
-                            coll = cmid + 1
-                        else:
-                            colr = cmid - 1
-                    return False 
-                else:
-                    #updating the mid
-                    rb = rmid - 1
-            rmid = ((ra + rb) // 2)
-        return False
-            
+        return nums[mid]
+
+
 
 sol  = Solution()
-print(f"Does {3} exist? {sol.searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3)}")
+print(f"Min = {sol.findMin([11,13,15,17])}")

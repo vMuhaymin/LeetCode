@@ -1,5 +1,8 @@
 class Solution:
     def findMin(self, nums: list[int]) -> int:
+        """
+        O(log n)
+        """
 
         l, r = 0 , len(nums) - 1
         mid = (l + r)// 2
@@ -20,5 +23,3 @@ class Solution:
                 mid = (l+ r - 1) // 2 
 
         return nums[mid]
-
-sol  = Solution()
