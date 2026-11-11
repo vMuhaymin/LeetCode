@@ -10,22 +10,26 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: int
         """
+        if root == None:
+            return 0
+            
         stack = []
-        counter = 1
+        counter = 0
         stack.append([root , counter])
         max_depth = 0
 
         while stack :
 
             info = stack.pop()
-            node , depth = info[0] , info[1]
+            node , depth = info[0] , info[1] + 1
 
             if depth > max_depth:
                 max_depth = depth
+
             if node is not None:
                 if node.left is not None :
-                    stack.append([node.left , depth + 1])
+                    stack.append([node.left , depth ])
                 if node.right is not None : 
-                    stack.append([node.right , depth + 1])
-            
-            
+                    stack.append([node.right , depth ])
+        
+        return max_depth
