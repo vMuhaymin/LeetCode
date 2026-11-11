@@ -7,6 +7,7 @@ class Solution(object):
         while l <= r :
             if nums[mid] == target:
                 return mid
+            
             #Check left sub array
             elif nums[l] <= nums[mid] :
                 if nums[l] <= target < nums[mid]:
