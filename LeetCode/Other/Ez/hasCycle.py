@@ -10,16 +10,30 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        if head.next is None:
-            return False
 
-        node = head
-        unique = set()
-        while node.val not in unique:
-            unique.add(node.val)
-            if node.next is not None:
-                node = node.next
-            else:
-                return False
-        return True
+        # ** Bad solution **
+
+        # if head is None or head.next is None:
+        #     return False
+
+        # node = head
+        # while node.val != "":
+        #     node.val = ""
+        #     if node.next is not None:
+        #         node = node.next
+        #     else:
+        #         return False 
+        # return True
+
+         # ** Better approach **
         
+        fast = head
+        slow = head
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True
+        return False
